@@ -118,7 +118,7 @@ def get_your_faceImg_feature(name, model, features_dict):
         if len(bounding_boxes) == 0:
             continue
         # crop the face from the img (112, 112)
-        face_img, box = crop_face(frame, bounding_boxes, landmarks)
+        face_img, box = crop_face(np.array(img), bounding_boxes, landmarks)
         feature = get_face_feature(model, face_img)
         features_dict[name+'_'+str(idx)] = feature
         num_img_useful += 1
